@@ -14,6 +14,8 @@ out/
 .DS_Store
 *.pem
 npm-debug.log*
+tsconfig.tsbuildinfo
+next-env.d.ts
 
 # inspiration images (already in project dir, not part of app)
 *.webp

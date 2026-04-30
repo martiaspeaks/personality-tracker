@@ -1,10 +1,11 @@
-import type { NextConfig } from "next";
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 
-// Ensure .env.local is loaded even when Next.js doesn't pick it up automatically
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 function loadEnvLocal() {
-  const envPath = path.join(process.cwd(), ".env.local");
+  const envPath = path.join(__dirname, ".env.local");
   if (!fs.existsSync(envPath)) return;
   const lines = fs.readFileSync(envPath, "utf8").split("\n");
   for (const line of lines) {
@@ -20,6 +21,7 @@ function loadEnvLocal() {
 
 loadEnvLocal();
 
-const nextConfig: NextConfig = {};
+/** @type {import('next').NextConfig} */
+const nextConfig = {};
 
 export default nextConfig;
