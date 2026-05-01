@@ -365,11 +365,12 @@ function BottomNav({ active }: { active: string }) {
   const items = [
     { href: "/dashboard", label: "Today", key: "dashboard", icon: <GridIcon /> },
     { href: "/review", label: "Review", key: "review", icon: <ChatIcon /> },
+    { href: "/tests", label: "Tests", key: "tests", icon: <TestIcon /> },
     { href: "/progress", label: "Progress", key: "progress", icon: <ChartIcon /> },
   ];
   return (
     <div className="fixed bottom-0 left-0 right-0 max-w-md mx-auto px-4 pb-6 pt-3 bg-gradient-to-t from-bg to-transparent">
-      <div className="bg-surface rounded-2xl border border-border flex items-center justify-around py-3 px-6">
+      <div className="bg-surface rounded-2xl border border-border flex items-center justify-around py-3 px-4">
         {items.map((item) => (
           <a
             key={item.key}
@@ -395,4 +396,7 @@ function ChatIcon() {
 }
 function ChartIcon() {
   return <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M1.5 16.5h15M4.5 16.5V10.5M8.25 16.5V6.75M12 16.5V9M15.75 16.5V3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>;
+}
+function TestIcon() {
+  return <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4.5 2.25h9a1.5 1.5 0 0 1 1.5 1.5v10.5a1.5 1.5 0 0 1-1.5 1.5h-9a1.5 1.5 0 0 1-1.5-1.5V3.75a1.5 1.5 0 0 1 1.5-1.5Z" stroke="currentColor" strokeWidth="1.5" /><path d="M6 6.75h6M6 9h6M6 11.25h3.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>;
 }

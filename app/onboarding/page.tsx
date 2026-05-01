@@ -173,14 +173,20 @@ function ScoreEntry({
                   </p>
                 </div>
                 <div className="text-right">
-                  <span
-                    className="text-2xl font-semibold"
-                    style={{ color: TRAIT_COLORS[t] }}
-                  >
-                    {scores[t]}
-                  </span>
+                  <input
+                    type="number"
+                    min={0}
+                    max={100}
+                    value={scores[t]}
+                    onChange={(e) => {
+                      const v = Math.min(100, Math.max(0, Number(e.target.value)));
+                      onChange({ ...scores, [t]: v });
+                    }}
+                    className="w-16 text-2xl font-semibold text-right bg-transparent border-b-2 outline-none focus:border-opacity-100 transition-colors"
+                    style={{ color: TRAIT_COLORS[t], borderColor: TRAIT_COLORS[t] + "55" }}
+                  />
                   {gap > 0 && (
-                    <p className="text-xs text-text-tertiary">
+                    <p className="text-xs text-text-tertiary mt-0.5">
                       gap: {gap}
                     </p>
                   )}
