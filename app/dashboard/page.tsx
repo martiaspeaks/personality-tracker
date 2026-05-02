@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 import {
   TRAIT_COLORS,
   TRAIT_LABELS,
@@ -78,7 +79,14 @@ export default function Dashboard() {
             </p>
           )}
         </div>
-        <div className="flex flex-col items-end gap-1">
+        <div className="flex flex-col items-end gap-2">
+          <button
+            onClick={() => signOut({ callbackUrl: "/login" })}
+            className="text-xs text-text-tertiary hover:text-text-secondary transition-colors"
+            title="Sign out"
+          >
+            <SignOutIcon />
+          </button>
           <CompletionRing pct={pct} accent={accentColor} />
           {streak > 0 && (
             <p className="text-xs text-text-tertiary">{streak}d streak</p>
@@ -346,6 +354,14 @@ function Spinner() {
     <div className="flex items-center justify-center min-h-dvh">
       <div className="w-5 h-5 rounded-full border-2 border-white/20 border-t-white/80 animate-spin" />
     </div>
+  );
+}
+
+function SignOutIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M6.75 15.75H3.75a1.5 1.5 0 0 1-1.5-1.5V3.75a1.5 1.5 0 0 1 1.5-1.5h3M12 12.75 15.75 9 12 5.25M15.75 9H6.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }
 

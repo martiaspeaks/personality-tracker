@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import Providers from "./providers";
 
 export const metadata: Metadata = {
   title: "Personality Tracker",
@@ -27,9 +28,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <main className="min-h-dvh max-w-md mx-auto px-4 py-6">
-          {children}
-        </main>
+        <Providers>
+          <main className="min-h-dvh max-w-md mx-auto px-4 py-6">
+            {children}
+          </main>
+        </Providers>
       </body>
     </html>
   );
